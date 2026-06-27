@@ -1931,32 +1931,16 @@ textarea {
 }
 
 .timeline-entry-content {
-  /* padding: 20px; */
   background-color: var(--secondary-color);
   position: relative;
-  border-radius: 8px;
-  padding: 10px;
-  /* padding-top: 2px;
-  padding-left: 50px; */
   border-radius: 19px;
-  /* margin: 1rem; */
+  padding: 10px;
   transition: 0.9s;
-  background: linear-gradient(90deg, var(--background-color) -00%, var(--secondary-color) 130%);
 }
 
 .timeline-entry-content:hover {
   background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);
   scale: 102%;
-  transition: 0.9s;
-  /* font-size: 18; */
-  /* outline: var(--primary-color) solid 1px; */
-  /* outline: none; */
-}
-
-.visible-hover-effect {
-  background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);
-  transform: scale(1.02);
-  /* Same effect as hover */
   transition: 0.9s;
 }
 
@@ -2698,4 +2682,19 @@ body.light-mode .showcase-btn-primary:hover {
 
 [data-state="closed"][class*="zoom-out-95"] {
   animation: tw-out 200ms ease-in;
+}
+
+/* Dreamy Grainy Blur Texture Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  mix-blend-mode: overlay;
 }

@@ -238,20 +238,6 @@ export default function ClientInitializer() {
     window.addEventListener('load', revealTimelineEntries);
     revealTimelineEntries();
 
-    // 10. Timeline entry hover effect via IntersectionObserver
-    const timelineEntryContents = document.querySelectorAll('.timeline-entry-content');
-    const observerCallback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible-hover-effect');
-          observer.unobserve(entry.target);
-        }
-      });
-    };
-    const observer = new IntersectionObserver(observerCallback, { threshold: 0.1 });
-    timelineEntryContents.forEach(entry => {
-      observer.observe(entry);
-    });
 
     // 11. Autoplay carousel safeties (handles cases where .grid-auto-md exists, e.g. on other pages)
     const marqueeContainer = document.querySelector('.grid-auto-md');
@@ -312,7 +298,6 @@ export default function ClientInitializer() {
       if (themeToggleBtn) {
         themeToggleBtn.removeEventListener("click", handleThemeToggle);
       }
-      observer.disconnect();
     };
   }, []);
 
