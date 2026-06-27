@@ -55,7 +55,13 @@ export default function Header() {
       <Link href="/" className="logo">
         <span className="text2"></span>
       </Link>
-      <div className="bx bx-menu" id="menu-icon"></div>
+      <button
+        type="button"
+        className="bx bx-menu"
+        id="menu-icon"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+      />
       <ul className="navbar">
         {navItems.map((item) => (
           <li key={item.label}>

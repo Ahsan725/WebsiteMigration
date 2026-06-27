@@ -1,4 +1,4 @@
-import Script from 'next/script';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -6,9 +6,9 @@ export default function Home() {
       {/* 1. Home Section */}
       <section className="home" id="home">
         <div className="home-content">
-          <h3>Hello, It's Me:</h3>
+          <h3>Hello, It&apos;s Me:</h3>
           <h1 className="nm">Ahsan Baseer</h1>
-          <h3>And I'm <span className="text"></span></h3>
+          <h3>And I&apos;m <span className="text"></span></h3>
           <p className="text-contrast">I like building things :)</p>
           
           <div className="home-sci">
@@ -34,9 +34,9 @@ export default function Home() {
           <a href="#timeline" className="btn-box">
             <b>More About Me</b>
           </a>
-          <a href="https://chroma-visual-folio.vercel.app/" className="btn-box">
+          <Link href="/projects" className="btn-box">
             <b>Projects</b>
-          </a>
+          </Link>
         </div>
 
         <div>
@@ -326,23 +326,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. Portfolio Section */}
-      <section style={{ textAlign: "center" }}>
-        <div className="portfolio" id="portfolio">
-          <h1 className="sub-title"><span>Projects</span></h1>
-          <div id="project">
-            <button className="cssbuttons-io project-btn">
-              <span>
-                <a href="/projects" className="btn-link">
-                  <i className="bx bx-link-external"></i> View Projects &nbsp;
-                </a>
-              </span>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. Articles Section */}
+      {/* 7. Articles Section */}
       <section id="articles">
         <h1 className="sub-title"><span>Articles</span></h1>
         <p style={{ textAlign: "center" }}>Scroll through my LinkedIn articles</p>
@@ -468,7 +452,7 @@ export default function Home() {
               <img src="/bulb.png" className="art-img" alt="Article Icon" />
             </div>
             <div className="art-text">
-              <h3 className="art-heading">You're developing a website. How can you make it more interactive and engaging?</h3>
+              <h3 className="art-heading">You&apos;re developing a website. How can you make it more interactive and engaging?</h3>
               <p className="art-para">Start by including the WAAPI polyfill for wider browser support. Create HTML elements to be animated, define...</p>
               <button className="cssbuttons-io">
                 <span>

@@ -144,6 +144,7 @@ export default function ClientInitializer() {
       if (menuIcon && navbar) {
         menuIcon.classList.toggle("bx-x");
         navbar.classList.toggle("open");
+        menuIcon.setAttribute("aria-expanded", String(navbar.classList.contains("open")));
       }
     };
 
@@ -155,6 +156,7 @@ export default function ClientInitializer() {
       if (menuIcon && navbar) {
         menuIcon.classList.remove("bx-x");
         navbar.classList.remove("open");
+        menuIcon.setAttribute("aria-expanded", "false");
       }
     };
     window.addEventListener("scroll", handleScrollMenuReset);

@@ -9,7 +9,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import Link from "next/link"
 
 const projects = [
   {
@@ -197,6 +196,7 @@ export default function ProjectShowcase() {
                   key={index}
                   onClick={() => goToProject(index)}
                   className={`showcase-dot ${index === currentProject ? 'showcase-dot-active' : ''}`}
+                  aria-label={`Show ${projects[index].title}`}
                 />
               ))}
             </div>
@@ -262,6 +262,7 @@ export default function ProjectShowcase() {
               <button
                 onClick={prevProject}
                 className="showcase-nav-btn"
+                aria-label="Previous project"
               >
                 <i className="bx bx-chevron-left" style={{ fontSize: '24px' }}></i>
               </button>
@@ -273,6 +274,7 @@ export default function ProjectShowcase() {
               <button
                 onClick={nextProject}
                 className="showcase-nav-btn"
+                aria-label="Next project"
               >
                 <i className="bx bx-chevron-right" style={{ fontSize: '24px' }}></i>
               </button>
