@@ -9,14 +9,14 @@ export default function Header() {
 
   return (
     <header className="header">
-      <Link href="https://www.ahsanbaseer.com/" className="logo">
+      <Link href="/" className="logo">
         <span className="text2"></span>
       </Link>
       <div className="bx bx-menu" id="menu-icon"></div>
       <ul className="navbar">
         {isProjectsPage ? (
           <li>
-            <Link href="https://www.ahsanbaseer.com/">
+            <Link href="/">
               <i className="bx bx-left-arrow-alt"></i>Back to Home
             </Link>
           </li>
@@ -26,7 +26,7 @@ export default function Header() {
             <li><a href="#timeline">Experience</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
-            <li><a href="https://chroma-visual-folio.vercel.app/">Projects</a></li>
+            <li><a href="/projects">Projects</a></li>
             <li><a href="#articles">Articles</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="#resume">Resume</a></li>

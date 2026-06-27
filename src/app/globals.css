@@ -2115,3 +2115,587 @@ body.loading {
   font-family: 'Snell Roundhand', 'Pinyon Script', cursive;
   font-size: 80px;
 }
+
+/* ==========================================
+   PROJECT SHOWCASE STYLES
+   Ported from chroma-visual-folio, adapted to
+   use the main site's CSS variable system.
+   ========================================== */
+
+/* --- Container & Layout --- */
+
+.showcase-container {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  font-family: Optima, 'Inter', sans-serif;
+}
+
+.showcase-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* --- Back Navigation --- */
+
+.showcase-back-nav {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 50;
+}
+
+.showcase-back-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: var(--secondary-color);
+  border-radius: 40px;
+  font-size: 14px;
+  color: var(--background-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.showcase-back-link:hover {
+  box-shadow: 0 0 30px var(--secondary-color);
+  transform: scale(1.05);
+}
+
+/* --- Ambient Background --- */
+
+.showcase-ambient {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.showcase-ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: showcase-float 6s ease-in-out infinite;
+}
+
+.showcase-ambient-orb-1 {
+  top: 25%;
+  left: 25%;
+  width: 24rem;
+  height: 24rem;
+  background: var(--secondary-color);
+  opacity: 0.05;
+}
+
+.showcase-ambient-orb-2 {
+  bottom: 33%;
+  right: 25%;
+  width: 20rem;
+  height: 20rem;
+  background: var(--accent-color);
+  opacity: 0.05;
+  animation-delay: 2s;
+}
+
+@keyframes showcase-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+/* --- Image Section --- */
+
+.showcase-image-section {
+  position: relative;
+}
+
+.showcase-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: rgba(var(--background-color), 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.showcase-image-container {
+  aspect-ratio: 4 / 3;
+  position: relative;
+  overflow: hidden;
+}
+
+.showcase-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.7s ease;
+}
+
+.showcase-image-wrapper:hover .showcase-image {
+  transform: scale(1.05);
+}
+
+.showcase-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--background-color) 0%, transparent 60%);
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.showcase-image-wrapper:hover .showcase-image-overlay {
+  opacity: 0.9;
+}
+
+.showcase-overlay-actions {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* --- Year Badge --- */
+
+.showcase-year-badge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: var(--secondary-color);
+  color: var(--background-color);
+  padding: 0.5rem 1rem;
+  border-radius: 99px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+  display: inline-flex;
+  align-items: center;
+}
+
+/* --- Navigation Dots --- */
+
+.showcase-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 0.75rem;
+}
+
+.showcase-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--secondary-color);
+  opacity: 0.3;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.showcase-dot:hover {
+  opacity: 0.6;
+}
+
+.showcase-dot-active {
+  opacity: 1;
+  transform: scale(1.25);
+  box-shadow: 0 0 12px var(--secondary-color);
+}
+
+/* --- Info Section --- */
+
+.showcase-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.showcase-info-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.showcase-project-counter {
+  font-size: 0.875rem;
+  color: var(--accent-color);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.showcase-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.showcase-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.showcase-subtitle {
+  font-size: 1.25rem;
+  color: var(--accent-color);
+  font-weight: 500;
+}
+
+/* --- Gradient Text --- */
+
+.showcase-gradient-text {
+  background: linear-gradient(5deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: showcase-gradient-shift 3s ease-in-out infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes showcase-gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* --- Technologies Section --- */
+
+.showcase-tech-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.showcase-section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.showcase-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.showcase-tech-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 99px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(157, 126, 222, 0.1);
+  color: var(--accent-color);
+  border: 1px solid rgba(157, 126, 222, 0.2);
+  transition: all 0.3s ease;
+}
+
+body.light-mode .showcase-tech-badge {
+  background: var(--light-secondary-color);
+  color: white;
+  border: none;
+}
+
+.showcase-tech-badge:hover {
+  background: rgba(157, 126, 222, 0.2);
+}
+
+body.light-mode .showcase-tech-badge:hover {
+  background: var(--light-secondary-color);
+  opacity: 0.85;
+}
+
+/* --- Action Buttons --- */
+
+.showcase-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .showcase-actions {
+    flex-direction: row;
+  }
+}
+
+.showcase-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 2rem;
+  background: var(--secondary-color);
+  color: var(--background-color);
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.showcase-btn-primary:hover {
+  background: var(--primary-color);
+  color: var(--background-color);
+  box-shadow: 0 0 30px var(--primary-shadow-color);
+}
+
+body.light-mode .showcase-btn-primary:hover {
+  background: var(--light-primary-color);
+  color: var(--light-background-color);
+}
+
+.showcase-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 2rem;
+  background: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.showcase-btn-outline:hover {
+  background: var(--secondary-color);
+  color: var(--background-color);
+  border-color: var(--secondary-color);
+}
+
+/* --- Glow on Hover --- */
+
+.showcase-glow-on-hover {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+}
+
+.showcase-glow-on-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary-shadow-color),
+    transparent
+  );
+  transition: left 0.6s;
+}
+
+.showcase-glow-on-hover:hover::before {
+  left: 100%;
+}
+
+/* --- Navigation Controls --- */
+
+.showcase-nav-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+
+.showcase-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.showcase-nav-btn:hover {
+  background: var(--secondary-color);
+  color: var(--background-color);
+  border-color: var(--secondary-color);
+}
+
+.showcase-nav-label {
+  font-size: 0.875rem;
+  color: var(--accent-color);
+}
+
+/* --- Glowing Border --- */
+
+.showcase-glow-border {
+  position: relative;
+  background: var(--background-color);
+  border-radius: 1rem;
+}
+
+.showcase-glow-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  background: linear-gradient(5deg, var(--primary-color), var(--secondary-color));
+  border-radius: 1rem;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+/* --- Stagger Fade In --- */
+
+.showcase-stagger-fade-in {
+  opacity: 0;
+  animation: showcase-fadeInUp 0.6s ease-out forwards;
+}
+
+.showcase-stagger-fade-in:nth-child(1) { animation-delay: 0.1s; }
+.showcase-stagger-fade-in:nth-child(2) { animation-delay: 0.2s; }
+.showcase-stagger-fade-in:nth-child(3) { animation-delay: 0.3s; }
+.showcase-stagger-fade-in:nth-child(4) { animation-delay: 0.4s; }
+.showcase-stagger-fade-in:nth-child(5) { animation-delay: 0.5s; }
+.showcase-stagger-fade-in:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes showcase-fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Dialog/Modal Overrides --- */
+
+.showcase-dialog-content {
+  background-color: var(--background-color) !important;
+  color: var(--primary-color) !important;
+  border: 1px solid var(--primary-shadow-color) !important;
+  backdrop-filter: blur(8px);
+}
+
+.showcase-muted-text {
+  color: var(--accent-color);
+}
+
+.showcase-stats-card {
+  background: var(--primary-shadow-color);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: 1px solid var(--primary-shadow-color);
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 1024px) {
+  .showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .showcase-content {
+    padding: 6rem 1.5rem 2rem;
+    align-items: flex-start;
+  }
+
+  .showcase-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase-content {
+    padding: 5rem 1rem 2rem;
+  }
+
+  .showcase-title {
+    font-size: 2rem;
+  }
+
+  .showcase-subtitle {
+    font-size: 1rem;
+  }
+
+  .showcase-back-link {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+
+  .showcase-overlay-actions {
+    flex-direction: column;
+  }
+}
+
+/* --- Tailwind-animate keyframes for Dialog transitions --- */
+
+@keyframes tw-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes tw-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+[data-state="open"][class*="animate-in"] {
+  animation: tw-in 200ms ease-out;
+}
+
+[data-state="closed"][class*="animate-out"] {
+  animation: tw-out 200ms ease-in;
+}
+
+[data-state="open"][class*="fade-in-0"] {
+  animation: tw-in 200ms ease-out;
+}
+
+[data-state="closed"][class*="fade-out-0"] {
+  animation: tw-out 200ms ease-in;
+}
+
+[data-state="open"][class*="zoom-in-95"] {
+  animation: tw-in 200ms ease-out;
+}
+
+[data-state="closed"][class*="zoom-out-95"] {
+  animation: tw-out 200ms ease-in;
+}

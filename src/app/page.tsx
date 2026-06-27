@@ -333,7 +333,7 @@ export default function Home() {
           <div id="project">
             <button className="cssbuttons-io project-btn">
               <span>
-                <a href="https://chroma-visual-folio.vercel.app/" className="btn-link">
+                <a href="/projects" className="btn-link">
                   <i className="bx bx-link-external"></i> View Projects &nbsp;
                 </a>
               </span>
