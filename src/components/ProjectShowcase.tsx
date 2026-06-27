@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
-import { ChevronLeft, ChevronRight, ExternalLink, Play, Info } from "lucide-react"
+
 import { ProjectDetails } from "./ProjectDetails"
 import {
   Dialog,
@@ -159,10 +159,10 @@ export default function ProjectShowcase() {
                   <div className="showcase-overlay-actions">
                     {isDown ? (
                       <button
-                        className="showcase-btn-primary showcase-glow-on-hover flex-1"
+                        className="showcase-btn-primary flex-1"
                         onClick={() => setShowOutage(true)}
                       >
-                        <Play className="mr-2 h-5 w-5" style={{ display: 'inline' }} />
+                        <i className="bx bx-play" style={{ fontSize: '20px', marginRight: '8px' }}></i>
                         View Live
                       </button>
                     ) : (
@@ -170,9 +170,9 @@ export default function ProjectShowcase() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="showcase-btn-primary showcase-glow-on-hover flex-1"
+                        className="showcase-btn-primary flex-1"
                       >
-                        <Play className="mr-2 h-5 w-5" style={{ display: 'inline' }} />
+                        <i className="bx bx-play" style={{ fontSize: '20px', marginRight: '8px' }}></i>
                         View Live
                       </a>
                     )}
@@ -180,7 +180,7 @@ export default function ProjectShowcase() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="showcase-btn-outline showcase-glow-on-hover flex-1"
+                      className="showcase-btn-outline flex-1"
                     >
                       <i className="bx bxl-github" style={{ fontSize: '20px', marginRight: '8px' }}></i>
                       Code
@@ -241,10 +241,10 @@ export default function ProjectShowcase() {
             <div className="showcase-actions">
               {isDown ? (
                 <button
-                  className="showcase-btn-primary showcase-glow-on-hover"
+                  className="showcase-btn-primary"
                   onClick={() => setShowOutage(true)}
                 >
-                  <ExternalLink className="mr-2 h-5 w-5" style={{ display: 'inline' }} />
+                  <i className="bx bx-link-external" style={{ fontSize: '20px', marginRight: '8px' }}></i>
                   Launch Project
                 </button>
               ) : (
@@ -252,18 +252,18 @@ export default function ProjectShowcase() {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="showcase-btn-primary showcase-glow-on-hover"
+                  className="showcase-btn-primary"
                 >
-                  <ExternalLink className="mr-2 h-5 w-5" style={{ display: 'inline' }} />
+                  <i className="bx bx-link-external" style={{ fontSize: '20px', marginRight: '8px' }}></i>
                   Launch Project
                 </a>
               )}
 
               <button
-                className="showcase-btn-outline showcase-glow-on-hover"
+                className="showcase-btn-outline"
                 onClick={() => setIsDetailsOpen(true)}
               >
-                <Info className="mr-2 h-5 w-5" style={{ display: 'inline' }} />
+                <i className="bx bx-info-circle" style={{ fontSize: '20px', marginRight: '8px' }}></i>
                 More Details
               </button>
             </div>
@@ -272,9 +272,9 @@ export default function ProjectShowcase() {
             <div className="showcase-nav-controls">
               <button
                 onClick={prevProject}
-                className="showcase-nav-btn showcase-glow-on-hover"
+                className="showcase-nav-btn"
               >
-                <ChevronLeft className="h-5 w-5" />
+                <i className="bx bx-chevron-left" style={{ fontSize: '24px' }}></i>
               </button>
 
               <div className="showcase-nav-label">
@@ -283,9 +283,9 @@ export default function ProjectShowcase() {
 
               <button
                 onClick={nextProject}
-                className="showcase-nav-btn showcase-glow-on-hover"
+                className="showcase-nav-btn"
               >
-                <ChevronRight className="h-5 w-5" />
+                <i className="bx bx-chevron-right" style={{ fontSize: '24px' }}></i>
               </button>
             </div>
           </div>

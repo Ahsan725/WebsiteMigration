@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, CheckCircle, Calendar } from "lucide-react";
+
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface Project {
@@ -71,7 +71,7 @@ export function ProjectDetails({
                 className="block w-full aspect-video object-cover"
               />
               <div className="absolute top-4 right-4 showcase-year-badge">
-                <Calendar className="inline w-4 h-4 mr-1" />
+                <i className="bx bx-calendar inline mr-1" style={{ fontSize: '16px' }}></i>
                 {project.year}
               </div>
             </div>
@@ -141,7 +141,7 @@ export function ProjectDetails({
                         key={feature}
                         className="flex items-center gap-3 showcase-stagger-fade-in"
                         style={{ animationDelay: `${index * 0.3}s` }}>
-                        <CheckCircle className="h-5 w-5 flex-shrink-0" style={{ color: 'var(--secondary-color)' }} />
+                        <i className="bx bx-check-circle flex-shrink-0" style={{ color: 'var(--secondary-color)', fontSize: '20px' }}></i>
                         <span className="showcase-muted-text">{feature}</span>
                       </div>
                     ))}
@@ -154,9 +154,9 @@ export function ProjectDetails({
             <div className="flex flex-col sm:flex-row gap-3 pt-4" style={{ borderTop: '1px solid var(--primary-shadow-color)' }}>
               {isDown ? (
                 <button
-                  className="flex-1 showcase-btn-primary showcase-glow-on-hover"
+                  className="flex-1 showcase-btn-primary"
                   onClick={() => setShowOutage(true)}>
-                  <ExternalLink className="mr-2 h-5 w-5" style={{ display: 'inline' }} />
+                  <i className="bx bx-link-external" style={{ fontSize: '20px', marginRight: '8px' }}></i>
                   Launch Project
                 </button>
               ) : (
@@ -164,8 +164,8 @@ export function ProjectDetails({
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 showcase-btn-primary showcase-glow-on-hover">
-                  <ExternalLink className="mr-2 h-5 w-5" style={{ display: 'inline' }} />
+                  className="flex-1 showcase-btn-primary">
+                  <i className="bx bx-link-external" style={{ fontSize: '20px', marginRight: '8px' }}></i>
                   Launch Project
                 </a>
               )}
@@ -174,7 +174,7 @@ export function ProjectDetails({
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 showcase-btn-outline showcase-glow-on-hover">
+                className="flex-1 showcase-btn-outline">
                 <i className="bx bxl-github" style={{ fontSize: '20px', marginRight: '8px' }}></i>
                 View Code
               </a>
