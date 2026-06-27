@@ -203,8 +203,15 @@ export default function ClientInitializer() {
     handleScrollProgressBar();
 
     // 8. Skill Cards focused state on scroll
-    const skillCards = document.querySelectorAll('.skill-card');
+    let skillFocusFrame: number | null = null;
     const updateSkillFocus = () => {
+      if (skillFocusFrame !== null) return;
+
+      skillFocusFrame = window.requestAnimationFrame(() => {
+        skillFocusFrame = null;
+        const skillCards = document.querySelectorAll('.skill-card');
+        if (!skillCards.length) return;
+
       const viewportCenter = window.innerHeight / 2;
       skillCards.forEach(card => {
         const rect = card.getBoundingClientRect();
@@ -218,8 +225,16 @@ export default function ClientInitializer() {
           card.classList.remove('focused');
         }
       });
+      });
     };
+
+    const skillCardObserver = new MutationObserver(updateSkillFocus);
+    skillCardObserver.observe(document.getElementById('main-content') ?? document.body, {
+      childList: true,
+      subtree: true,
+    });
     window.addEventListener('scroll', updateSkillFocus);
+    window.addEventListener('resize', updateSkillFocus);
     window.addEventListener('load', updateSkillFocus);
     updateSkillFocus();
 
@@ -285,7 +300,12 @@ export default function ClientInitializer() {
       window.removeEventListener("scroll", handleScrollMenuReset);
       window.removeEventListener("scroll", handleScrollProgressBar);
       window.removeEventListener("scroll", updateSkillFocus);
+      window.removeEventListener("resize", updateSkillFocus);
       window.removeEventListener("load", updateSkillFocus);
+      skillCardObserver.disconnect();
+      if (skillFocusFrame !== null) {
+        window.cancelAnimationFrame(skillFocusFrame);
+      }
       window.removeEventListener("scroll", revealTimelineEntries);
       window.removeEventListener("load", revealTimelineEntries);
       
