@@ -5,8 +5,6 @@ import Link from 'next/link';
 
 export default function Header() {
   const pathname = usePathname();
-  const isProjectsPage = pathname === '/projects';
-
   return (
     <header className="header">
       <Link href="/" className="logo">
@@ -14,24 +12,14 @@ export default function Header() {
       </Link>
       <div className="bx bx-menu" id="menu-icon"></div>
       <ul className="navbar">
-        {isProjectsPage ? (
-          <li>
-            <Link href="/">
-              <i className="bx bx-left-arrow-alt"></i>Back to Home
-            </Link>
-          </li>
-        ) : (
-          <>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#timeline">Experience</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="/projects">Projects</a></li>
-            <li><a href="#articles">Articles</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#resume">Resume</a></li>
-          </>
-        )}
+        <li><Link href="/#home">Home</Link></li>
+        <li><Link href="/#timeline">Experience</Link></li>
+        <li><Link href="/#about">About</Link></li>
+        <li><Link href="/#skills">Skills</Link></li>
+        <li><Link href="/projects">Projects</Link></li>
+        <li><Link href="/#articles">Articles</Link></li>
+        <li><Link href="/#contact">Contact</Link></li>
+        <li><Link href="/#resume">Resume</Link></li>
       </ul>
     </header>
   );

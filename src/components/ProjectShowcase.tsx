@@ -133,12 +133,7 @@ export default function ProjectShowcase() {
         <div className="showcase-ambient-orb showcase-ambient-orb-2" />
       </div>
 
-      {/* Back to Home Link */}
-      <div className="showcase-back-nav">
-        <Link href="/" className="showcase-back-link">
-          <i className="bx bx-left-arrow-alt"></i>&nbsp;Back to Home
-        </Link>
-      </div>
+
 
       {/* Main Content */}
       <div className="showcase-content">
@@ -259,13 +254,7 @@ export default function ProjectShowcase() {
                 </a>
               )}
 
-              <button
-                className="showcase-btn-outline"
-                onClick={() => setIsDetailsOpen(true)}
-              >
-                <i className="bx bx-info-circle" style={{ fontSize: '20px', marginRight: '8px' }}></i>
-                More Details
-              </button>
+
             </div>
 
             {/* Navigation Controls */}

@@ -10,6 +10,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-y: scroll;
 }
 
 ::selection {
@@ -71,11 +72,21 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* background: var(--background-color);
-    transition: background-color 2.9s, color 2.9s; */
-  padding: 30px 18%;
+  padding: 18px 18%;
   transition: all 0.4s ease;
-  background: transparent;
+  background: rgba(25, 29, 42, 0.55);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode header {
+  background: rgba(255, 252, 240, 0.55);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
 }
 
 .logo {
@@ -130,18 +141,21 @@ section {
 }
 
 header.sticky {
-  background: rgba(25, 29, 42, 0.15);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(25, 29, 42, 0.65);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   transition: all 0.4s ease;
   padding: 12px 18%;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 body.light-mode header.sticky {
-  background: rgba(255, 252, 240, 0.15);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: rgba(255, 252, 240, 0.65);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 }
 
 .sticky .logo {
@@ -241,7 +255,7 @@ body.light-mode header.sticky {
     0 0 100px var(--secondary-color), 0 0 200px var(--secondary-color); */
   box-shadow: 0 0 90px var(--secondary-color);
   color: rgb(255, 255, 255);
-  scale: 115%;
+  scale: 104%;
   transition: 1s;
 }
 
@@ -269,7 +283,7 @@ body.light-mode header.sticky {
   background: var(--secondary-color);
   color: var(--primary-color);
   box-shadow: 0 0 30px var(--secondary-color);
-  scale: 125%;
+  scale: 106%;
   transition: 0.2s;
 }
 
@@ -1948,7 +1962,7 @@ textarea {
   margin-top: 0;
   font-size: 1.0em;
   font-weight: 900;
-  color: var(--primary-color);
+  color: #f7f1db !important;
   /* text-align: center; */
 }
 
@@ -1957,7 +1971,7 @@ textarea {
   font-weight: 600;
   margin-bottom: 0;
   font-style: italic;
-  color: var(--primary-color);
+  color: #f7f1db !important;
   /* text-align: center; */
 }
 
@@ -2112,7 +2126,7 @@ body.loading {
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-  background-color: var(--background-color);
+  background-color: transparent;
   color: var(--primary-color);
   font-family: Optima, 'Inter', sans-serif;
 }
@@ -2120,7 +2134,7 @@ body.loading {
 .showcase-content {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 7rem 1.5rem 2rem 1.5rem;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -2438,7 +2452,7 @@ body.loading {
 .showcase-btn-primary:hover {
   box-shadow: 0 0 90px var(--secondary-color);
   color: rgb(255, 255, 255);
-  scale: 115%;
+  scale: 104%;
 }
 
 .showcase-btn-primary:active {
@@ -2467,7 +2481,7 @@ body.loading {
   color: var(--background-color);
   border-color: var(--secondary-color);
   box-shadow: 0 0 90px var(--secondary-color);
-  scale: 115%;
+  scale: 104%;
 }
 
 .showcase-btn-outline:active {
@@ -2654,7 +2668,7 @@ body.loading {
   animation: tw-out 200ms ease-in;
 }
 
-/* Dreamy Grainy Blur Texture Overlay */
+/* Sharp Grainy Texture Overlay */
 body::before {
   content: "";
   position: fixed;
@@ -2664,7 +2678,32 @@ body::before {
   height: 100vh;
   pointer-events: none;
   z-index: 9999;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.12;
   mix-blend-mode: overlay;
+}
+
+/* Vignette Effect Around Edges */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9998;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+}
+
+body.light-mode::after {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
 }
