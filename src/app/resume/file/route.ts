@@ -1,9 +1,7 @@
-import { createDecipheriv, scryptSync } from "node:crypto";
-import { readFile } from "node:fs/promises";
-import path from "node:path";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import { createResumeToken, RESUME_COOKIE_NAME } from "@/lib/resume-access";
+import { readResumeDocument } from "@/lib/resume-document";
 
 export const dynamic = "force-dynamic";
 
@@ -22,16 +20,7 @@ export async function GET() {
   }
 
   try {
-    const resumePath = path.join(process.cwd(), "private", "Ahsan-Baseer-Resume.enc");
-    const encrypted = await readFile(resumePath);
-    const salt = encrypted.subarray(0, 16);
-    const iv = encrypted.subarray(16, 28);
-    const authTag = encrypted.subarray(28, 44);
-    const ciphertext = encrypted.subarray(44);
-    const key = scryptSync(configuredPassword, salt, 32);
-    const decipher = createDecipheriv("aes-256-gcm", key, iv);
-    decipher.setAuthTag(authTag);
-    const resume = Buffer.concat([decipher.update(ciphertext), decipher.final()]);
+    const resume = await readResumeDocument(configuredPassword);
 
     return new NextResponse(resume, {
       headers: {

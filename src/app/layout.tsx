@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import FluidCursor from "@/components/FluidCursor";
 import ClientInitializer from "@/components/ClientInitializer";
+import PageTransitionLoader from "@/components/PageTransitionLoader";
 
 export const metadata: Metadata = {
   title: "Ahsan Baseer",
@@ -35,17 +36,13 @@ export default function RootLayout({
           })();
         ` }} />
       </head>
-      <body className="loading">
+      <body>
         <div className="scroll-indicator">
           <div className="progress-bar"></div>
         </div>
         
         <FluidCursor />
-        
-        <div id="preloader">
-          <img src="/ahsanname.png" alt="Ahsan Logo" />
-          <div className="loader"></div>
-        </div>
+        <PageTransitionLoader />
 
         <Header />
 
@@ -60,9 +57,18 @@ export default function RootLayout({
         <a className="toggle" id="themeToggle1" title="Toggle Theme" data-tooltip="Toggle Theme">
           <i className="bx bxs-sun"></i>
         </a>
-        <a className="toggle" id="cursorToggle" title="Toggle Cursor" style={{ top: "8.5rem" }} data-tooltip="Toggle Cursor">
-          <i className="bx bx-pointer"></i>
-        </a>
+        <button
+          type="button"
+          className="toggle effects-toggle"
+          id="effectsToggle"
+          title="Remove Effects"
+          style={{ top: "8.5rem" }}
+          data-tooltip="Remove Effects"
+          aria-label="Toggle visual effects"
+          aria-pressed="true"
+        >
+          <i className="bx bx-layer"></i>
+        </button>
 
         <ClientInitializer />
       </body>

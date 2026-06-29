@@ -19,8 +19,19 @@ export default function FluidCursor() {
     canvas.style.zIndex = "-1";
     canvas.style.pointerEvents = "none";
 
-    let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    let isRunning = !isMobile;
+    const isMobile =
+      /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
+      window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile) {
+      document.body.classList.add("effects-off");
+      document.getElementById("fluid-container")?.style.setProperty("display", "none");
+      const effectsToggle = document.getElementById("effectsToggle");
+      effectsToggle?.classList.add("off");
+      effectsToggle?.setAttribute("aria-pressed", "false");
+      return;
+    }
+
+    let isRunning = true;
     let animationFrameId: number;
 
     // Key press event to stop the animation
@@ -1063,30 +1074,37 @@ export default function FluidCursor() {
     (window as any).fluidInstance = fluidInstance;
 
     // Manage toggle setup immediately
-    const cursorToggleBtn = document.getElementById("cursorToggle");
-    const preferredCursor = localStorage.getItem("fluidCursor");
-    let cursorEnabled = preferredCursor === null ? !isMobile : preferredCursor === "enabled";
+    const effectsToggleBtn = document.getElementById("effectsToggle");
+    const preferredEffects = localStorage.getItem("siteEffects");
+    let effectsEnabled = !isMobile && preferredEffects !== "disabled";
 
-    if (!cursorEnabled) {
-      fluidInstance.stop();
-      if (cursorToggleBtn) cursorToggleBtn.classList.add("off");
-    }
+    const applyEffectsState = (enabled: boolean) => {
+      effectsEnabled = enabled && !isMobile;
+      document.body.classList.toggle("effects-off", !effectsEnabled);
+      effectsToggleBtn?.classList.toggle("off", !effectsEnabled);
+      effectsToggleBtn?.setAttribute("aria-pressed", String(effectsEnabled));
+      effectsToggleBtn?.setAttribute(
+        "data-tooltip",
+        effectsEnabled ? "Remove Effects" : "Restore Effects",
+      );
 
-    const handleCursorToggle = () => {
-      cursorEnabled = !cursorEnabled;
-      if (cursorEnabled) {
+      if (effectsEnabled) {
         fluidInstance.start();
-        if (cursorToggleBtn) cursorToggleBtn.classList.remove("off");
-        localStorage.setItem("fluidCursor", "enabled");
       } else {
         fluidInstance.stop();
-        if (cursorToggleBtn) cursorToggleBtn.classList.add("off");
-        localStorage.setItem("fluidCursor", "disabled");
       }
     };
 
-    if (cursorToggleBtn) {
-      cursorToggleBtn.addEventListener("click", handleCursorToggle);
+    applyEffectsState(effectsEnabled);
+
+    const handleEffectsToggle = () => {
+      const nextState = !effectsEnabled;
+      localStorage.setItem("siteEffects", nextState ? "enabled" : "disabled");
+      applyEffectsState(nextState);
+    };
+
+    if (effectsToggleBtn && !isMobile) {
+      effectsToggleBtn.addEventListener("click", handleEffectsToggle);
     }
 
     return () => {
@@ -1098,8 +1116,8 @@ export default function FluidCursor() {
       window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("touchmove", handleTouchMove as any);
       window.removeEventListener("touchend", handleTouchEnd);
-      if (cursorToggleBtn) {
-        cursorToggleBtn.removeEventListener("click", handleCursorToggle);
+      if (effectsToggleBtn) {
+        effectsToggleBtn.removeEventListener("click", handleEffectsToggle);
       }
       delete (window as any).fluidInstance;
     };

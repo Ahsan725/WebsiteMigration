@@ -5,31 +5,6 @@ import Typed from 'typed.js';
 
 export default function ClientInitializer() {
   useEffect(() => {
-    // 1. Hide the preloader
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-      preloader.style.display = 'none';
-    }
-    const mainContent = document.getElementById('main-content');
-    if (mainContent) {
-      mainContent.style.display = 'block';
-    }
-    document.body.classList.remove('loading');
-
-    // 1b. Display success message if existingDiv exists (original window.onload behavior)
-    const existingDiv = document.getElementById('existingDiv');
-    if (existingDiv) {
-      const successMessage = document.createElement('div');
-      successMessage.textContent = 'Success! Your message was sent ✓';
-      successMessage.classList.add('success-message');
-      existingDiv.appendChild(successMessage);
-      setTimeout(() => {
-        if (existingDiv.contains(successMessage)) {
-          existingDiv.removeChild(successMessage);
-        }
-      }, 3000);
-    }
-
     // 2. Typed.js Initialization
     let typedTextInstance: Typed | null = null;
     let typedSkillsInstance: Typed | null = null;

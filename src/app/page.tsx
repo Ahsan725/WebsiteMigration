@@ -126,12 +126,15 @@ export default function Home() {
       </div>
 
       {/* 4. About Section */}
-      <section className="about" id="about" style={{ textAlign: "center" }}>
-        <div className="about-text">
-          <h1 className="sub-title"><span>About Me</span></h1>
-          <br />
-          <div className="about-longtxt">
-            <p className="text-contrast">
+      <section className="about" id="about">
+        <div className="about-layout">
+          <aside className="about-heading-column">
+            <h1 className="sub-title"><span>About Me</span></h1>
+          </aside>
+
+          <div className="about-copy-column">
+            <div className="about-longtxt">
+              <p className="text-contrast">
               In a perfectly ordinary apartment where nothing magical ever happened unless you count the microwave
               finally heating food evenly, I was raised on two reliable forces: love and necessity. I’m an
               immigrant and a first-gen college student, so “resourceful” is my middle name. We didn’t have much
@@ -153,14 +156,13 @@ export default function Home() {
               iterate over it. Now instead of toys, it’s software. I’ve taught myself most of what I know because
               I genuinely love learning, and because deep down I’m still that kid staring at a broken thing
               thinking, alright, show me what makes you tick.
-            </p>
-            <br />
+              </p>
+            </div>
+            <h3 className="ab-text2">
+              My Skills include: <span className="text1"></span>
+            </h3>
+            <Link href="/contact" className="btn-box">Get in Touch?</Link>
           </div>
-          <h3 className="ab-text2" style={{ textAlign: "center" }}>
-            My Skills include: <span className="text1"></span>
-          </h3>
-          <br /><br /><br />
-          <a href="#contact" className="btn-box">Get in Touch?</a>
         </div>
       </section>
 
@@ -518,68 +520,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. Contact Section */}
-      <form action="https://api.web3forms.com/submit" method="POST" id="contact">
-        <input type="hidden" name="redirect" value="https://www.ahsanbaseer.com/#contact" />
-        <div className="background">
-          <div className="container">
-            <h1 className="sub-title"><span>Contact</span></h1>
-            <div className="screen">
-              <div className="screen-header">
-                <div className="screen-header-left">
-                  <div className="screen-header-button close"></div>
-                  <div className="screen-header-button maximize"></div>
-                  <div className="screen-header-button minimize"></div>
-                </div>
-                <div className="screen-header-right">
-                  <div className="screen-header-ellipsis"></div>
-                  <div className="screen-header-ellipsis"></div>
-                  <div className="screen-header-ellipsis"></div>
-                </div>
-              </div>
-              
-              <div className="screen-body">
-                <div className="screen-body-item left">
-                  <div className="app-title">
-                    <span><strong>Get In Touch With Me!</strong></span>
-                  </div>
-                  <div className="app-contact">Ahsan Baseer</div>
-                </div>
-                
-                <div className="screen-body-item">
-                  <div className="app-form">
-                    <input type="hidden" name="access_key" value="89b85a1d-9630-4362-85b2-76ff6fc9f6ee" />
-                    <div className="app-form-group">
-                      <input className="app-form-control" placeholder="NAME" type="text" name="name" required />
-                    </div>
-                    <div className="app-form-group">
-                      <input className="app-form-control" placeholder="EMAIL" type="email" name="email" required />
-                    </div>
-                    <div className="app-form-group message">
-                      <textarea className="app-form-control" placeholder="MESSAGE" name="message" required></textarea>
-                    </div>
-                    <div className="app-form-group buttons">
-                      <button className="app-form-button" type="submit">
-                        SEND <i className="bx bx-send bx-tada"></i>
-                      </button>
-                      <div id="existingDiv"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
-
-      {/* 10. Resume Section */}
-      <div id="resume" style={{ textAlign: 'center', padding: '50px 0' }}>
-        <h1 className="sub-title"><span>Resume</span></h1>
-        <p className="text-contrast" style={{ textAlign: 'center' }}>
-          Resume access is password protected.
-        </p>
-        <Link href="/resume" className="btn-box">View Resume</Link>
-      </div>
     </>
   );
 }
