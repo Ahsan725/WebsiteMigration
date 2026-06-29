@@ -13,7 +13,7 @@ const navItems = [
   { label: 'Projects', href: '/projects' },
   { label: 'Articles', section: 'articles' },
   { label: 'Contact', section: 'contact' },
-  { label: 'Resume', section: 'resume' },
+  { label: 'Resume', href: '/resume' },
 ] as const;
 
 export default function Header() {

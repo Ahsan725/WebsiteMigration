@@ -575,12 +575,10 @@ export default function Home() {
       {/* 10. Resume Section */}
       <div id="resume" style={{ textAlign: 'center', padding: '50px 0' }}>
         <h1 className="sub-title"><span>Resume</span></h1>
-        {/* Render JotForm as a responsive iframe */}
-        <iframe
-          src="https://form.jotform.com/240124424717146"
-          title="Ahsan Baseer Resume Form"
-          style={{ width: "100%", height: "800px", border: "none", marginTop: "20px" }}
-        />
+        <p className="text-contrast" style={{ textAlign: 'center' }}>
+          Resume access is password protected.
+        </p>
+        <Link href="/resume" className="btn-box">View Resume</Link>
       </div>
     </>
   );
