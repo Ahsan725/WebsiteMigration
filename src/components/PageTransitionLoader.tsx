@@ -2,20 +2,39 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { flushSync } from "react-dom";
 
 export default function PageTransitionLoader() {
   const pathname = usePathname();
   const [visible, setVisible] = useState(true);
-  const timeoutRef = useRef<number | null>(null);
+  const [fading, setFading] = useState(false);
+  const fadeTimeoutRef = useRef<number | null>(null);
+  const removeTimeoutRef = useRef<number | null>(null);
 
-  const showForOneSecond = useCallback(() => {
-    if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
-    setVisible(true);
+  const showForOneSecond = useCallback((immediate = false) => {
+    if (fadeTimeoutRef.current) window.clearTimeout(fadeTimeoutRef.current);
+    if (removeTimeoutRef.current) window.clearTimeout(removeTimeoutRef.current);
+
+    const revealLoader = () => {
+      setVisible(true);
+      setFading(false);
+    };
+
+    if (immediate) {
+      flushSync(revealLoader);
+    } else {
+      revealLoader();
+    }
+
     document.body.classList.add("loading");
-    timeoutRef.current = window.setTimeout(() => {
-      setVisible(false);
-      document.body.classList.remove("loading");
-      timeoutRef.current = null;
+    fadeTimeoutRef.current = window.setTimeout(() => {
+      setFading(true);
+      fadeTimeoutRef.current = null;
+      removeTimeoutRef.current = window.setTimeout(() => {
+        setVisible(false);
+        document.body.classList.remove("loading");
+        removeTimeoutRef.current = null;
+      }, 1200);
     }, 1000);
   }, []);
 
@@ -38,18 +57,19 @@ export default function PageTransitionLoader() {
         && Boolean(destination.hash);
 
       if (destination.origin === current.origin && !isSameDocumentHash && destination.href !== current.href) {
-        showForOneSecond();
+        showForOneSecond(true);
       }
     };
 
-    const handleHistoryNavigation = () => showForOneSecond();
+    const handleHistoryNavigation = () => showForOneSecond(true);
     document.addEventListener("click", handleDocumentClick, true);
     window.addEventListener("popstate", handleHistoryNavigation);
 
     return () => {
       document.removeEventListener("click", handleDocumentClick, true);
       window.removeEventListener("popstate", handleHistoryNavigation);
-      if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+      if (fadeTimeoutRef.current) window.clearTimeout(fadeTimeoutRef.current);
+      if (removeTimeoutRef.current) window.clearTimeout(removeTimeoutRef.current);
       document.body.classList.remove("loading");
     };
   }, [showForOneSecond]);
@@ -57,7 +77,12 @@ export default function PageTransitionLoader() {
   if (!visible) return null;
 
   return (
-    <div id="preloader" role="status" aria-label="Loading page">
+    <div
+      id="preloader"
+      className={fading ? "is-fading" : undefined}
+      role="status"
+      aria-label="Loading page"
+    >
       <img className="route-loader-logo" src="/ahsanname.png" alt="" />
       <div className="loader" aria-hidden="true" />
     </div>

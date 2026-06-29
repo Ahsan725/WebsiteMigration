@@ -130,38 +130,56 @@ export default function Home() {
         <div className="about-layout">
           <aside className="about-heading-column">
             <h1 className="sub-title"><span>About Me</span></h1>
+            <p className="text-contrast">
+              Driven by curiosity, resourcefulness, and a lifelong instinct to understand how things work.
+            </p>
           </aside>
 
           <div className="about-copy-column">
-            <div className="about-longtxt">
-              <p className="text-contrast">
-              In a perfectly ordinary apartment where nothing magical ever happened unless you count the microwave
-              finally heating food evenly, I was raised on two reliable forces: love and necessity. I’m an
-              immigrant and a first-gen college student, so “resourceful” is my middle name. We didn’t have much
-              money for new toys, which sounds unfortunate until you realize it accidentally gave me my first
-              engineering lab and my passion. My happiest moments were with broken toys, the kind most kids would
-              toss aside. I treated them like mysteries. I’d crack them open to figure out what made them tick,
-              then try to revive them after their inevitable demise, often caused by my own extremely rigorous
-              experiments like “what if I bend this” or “what if I press every button at once.”
-              
-              <br /><br />
-              Somewhere between
-              missing screws and questionable reassembly, I learned problem solving early. If I can understand how
-              something works, I can fix it, reverse engineer it, and probably add a modification that makes it
-              slightly better or at least more interesting.
+            <article className="about-story-block">
+              <span className="about-story-number">01</span>
+              <div>
+                <h3>Built from curiosity</h3>
+                <p className="text-contrast">
+                  I grew up in an immigrant, first-generation household where resourcefulness was less of a trait
+                  and more of a necessity. New toys were rare, so broken ones became my first engineering lab. I
+                  opened them up, studied what made them work, and tried to bring them back to life—usually after
+                  experiments involving bent parts and every button being pressed at once.
+                </p>
+              </div>
+            </article>
 
-              When I got to college, I tried pre-med track because science scratched the same curiosity itch. But
-              something was missing. After switching majors a few times, I found Computer Science and it clicked.
-              CS gave me my favorite two step passion: first, understand the system. Second, get hands on and
-              iterate over it. Now instead of toys, it’s software. I’ve taught myself most of what I know because
-              I genuinely love learning, and because deep down I’m still that kid staring at a broken thing
-              thinking, alright, show me what makes you tick.
-              </p>
+            <article className="about-story-block">
+              <span className="about-story-number">02</span>
+              <div>
+                <h3>Understand it. Improve it.</h3>
+                <p className="text-contrast">
+                  Somewhere between missing screws and questionable reassembly, I learned how much I enjoy solving
+                  problems. That instinct still guides me: understand the system first, then repair it, reverse
+                  engineer it, or find a way to make it more useful and more interesting.
+                </p>
+              </div>
+            </article>
+
+            <article className="about-story-block">
+              <span className="about-story-number">03</span>
+              <div>
+                <h3>From science to software</h3>
+                <p className="text-contrast">
+                  I entered college on the pre-med track because science fed that curiosity, but Computer Science
+                  made everything click. It gave me the same two-part process I had always loved: learn how the
+                  system works, then get hands-on and iterate. The objects changed from toys to software; the
+                  curiosity never did.
+                </p>
+              </div>
+            </article>
+
+            <div className="about-actions">
+              <h3 className="ab-text2">
+                My Skills include: <span className="text1"></span>
+              </h3>
+              <Link href="/contact" className="btn-box">Get in Touch?</Link>
             </div>
-            <h3 className="ab-text2">
-              My Skills include: <span className="text1"></span>
-            </h3>
-            <Link href="/contact" className="btn-box">Get in Touch?</Link>
           </div>
         </div>
       </section>

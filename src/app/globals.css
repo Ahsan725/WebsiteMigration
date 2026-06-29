@@ -1099,9 +1099,22 @@ body.light-mode [data-tooltip]::before {
 .effects-toggle {
   appearance: none;
   border: 0;
+  outline: 0;
   padding: 0;
+  background: transparent;
+  box-shadow: none;
+  color: inherit;
+  font: inherit;
+  line-height: 0;
   cursor: pointer;
   transition: transform 0.3s ease;
+}
+
+.effects-toggle:focus,
+.effects-toggle:focus-visible {
+  border: 0;
+  outline: 0;
+  box-shadow: none;
 }
 
 .effects-toggle.off i {
@@ -2156,6 +2169,14 @@ textarea {
   display: flex;
   /* Use flexbox layout */
   flex-direction: column;
+  opacity: 1;
+  will-change: opacity;
+}
+
+#preloader.is-fading {
+  opacity: 0;
+  transition: opacity 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
 }
 
 body.loading {
@@ -2887,8 +2908,8 @@ body::after {
 }
 
 .resume-title {
-  font-size: clamp(2.5rem, 8vw, 4.75rem);
-  line-height: 0.95;
+  font-size: 30px;
+  line-height: normal;
 }
 
 .resume-description {
@@ -2984,7 +3005,7 @@ body.effects-off::before {
   content: none;
 }
 
-/* About: scrolling copy with a stationary heading on the right. */
+/* About: editorial story with a stationary introduction. */
 .about {
   align-items: stretch;
 }
@@ -2993,7 +3014,7 @@ body.effects-off::before {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
   grid-template-areas: "copy heading";
-  gap: 80px;
+  gap: clamp(60px, 8vw, 110px);
   align-items: start;
   width: 100%;
   max-width: 1200px;
@@ -3004,6 +3025,9 @@ body.effects-off::before {
 .about-copy-column {
   grid-area: copy;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
   text-align: left;
 }
 
@@ -3018,19 +3042,54 @@ body.effects-off::before {
 .about-heading-column .sub-title {
   margin: 0;
   text-align: right;
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  line-height: 0.95;
+  font-size: 30px;
+  line-height: normal;
 }
 
-.about-longtxt .text-contrast {
+.about-heading-column .text-contrast {
+  max-width: 360px;
+  margin: 1rem 0 0 auto;
+  text-align: right;
+}
+
+.about-story-block {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 1.5rem;
+  padding: 0 0 4.5rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--primary-color) 16%, transparent);
+}
+
+.about-story-number {
+  padding-top: 0.35rem;
+  color: var(--secondary-color);
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.about-story-block h3 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  line-height: 1.15;
+}
+
+.about-story-block .text-contrast {
   margin: 0;
   font-size: clamp(1rem, 1.3vw, 1.15rem);
-  line-height: 1.9;
+  line-height: 1.8;
+  opacity: 0.84;
 }
 
 .about-copy-column .ab-text2 {
-  margin: 2rem 0;
+  margin: 0 0 2rem;
   text-align: left;
+}
+
+.about-actions {
+  padding-top: 0.5rem;
 }
 
 @media (max-width: 900px) {
@@ -3051,14 +3110,39 @@ body.effects-off::before {
   }
 
   .about-heading-column .sub-title,
-  .about-copy-column .ab-text2 {
+  .about-copy-column .ab-text2,
+  .about-heading-column .text-contrast {
     text-align: center;
+  }
+
+  .about-heading-column .text-contrast {
+    margin: 1rem auto 0;
   }
 
   .about-copy-column .btn-box {
     display: block;
     width: fit-content;
     margin: 0 auto;
+  }
+
+  .about-copy-column {
+    gap: 3rem;
+  }
+
+  .about-story-block {
+    display: block;
+    padding-bottom: 3rem;
+  }
+
+  .about-story-number {
+    display: block;
+    padding-top: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .about-story-block h3,
+  .about-story-block .text-contrast {
+    text-align: left;
   }
 }
 
