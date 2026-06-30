@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   title: "Ahsan Baseer",
   description: "Personal website of Ahsan Baseer",
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/favicon.png",
+    icon: "/favicon-transparent.png",
+    shortcut: "/favicon-transparent.png",
+    apple: "/favicon-transparent.png",
   },
 };
 
